@@ -1,0 +1,9 @@
+dill>=0.3.6
+Flask>=2.3.2
+numpy>=1.24.4
+pandas>=2.0.3
+setuptools>=68.0.0
+statsmodels>=0.14.0
+uszipcode>=1.0.1
+gurobipy>=10
+-e .
