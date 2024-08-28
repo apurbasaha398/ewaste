@@ -5,7 +5,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 from src.exception import CustomException
 import sys
 
-API_KEY = "AIzaSyB6MVcKfqVfHEEVt5ZJlylNLKFWXILrYI0"
+API_KEY = "Your API Key"
 
 def calculate_transportation_cost(start, end):
     # Initialize the Google Maps client with your API key
