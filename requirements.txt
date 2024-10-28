@@ -10,4 +10,5 @@ gurobipy-pandas
 ipykernel
 openpyxl
 googlemaps
+geopy
 -e .

@@ -4,8 +4,10 @@ from openpyxl import load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from src.exception import CustomException
 import sys
+import requests
+import json
 
-API_KEY = "Your API Key"
+API_KEY = "AIzaSyB6MVcKfqVfHEEVt5ZJlylNLKFWXILrYI0"
 
 def calculate_transportation_cost(start, end):
     # Initialize the Google Maps client with your API key
@@ -59,3 +61,31 @@ def add_sheet_to_excelbook(file_path, sheet_name, new_data):
     except Exception as e:
             raise CustomException(e, sys)
     
+def get_city_lat_long(city, state):
+    """
+    Function to get latitude and longitude of a US city
+
+    :param city: Name of a US city (string)
+    :param state: Name of the state the city belongs to (string)
+    """
+    address = "+".join([city, state])
+    
+    # Define the base url
+    geo_url = f"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={API_KEY}"
+    response = requests.get(geo_url)
+    content = response.content.decode("utf8")
+    geo_js = json.loads(content)
+    geo_status = geo_js["status"]
+    
+    if geo_status == "OK":
+        geo_elements = geo_js["results"][0]
+        geometry = geo_elements["geometry"]
+        location_coordinates = geometry["location"]
+        location_lat = location_coordinates["lat"]
+        location_long = location_coordinates["lng"]
+        # print(f"Long/lat coordinates successfully extracted.")
+    else:
+        location_lat = None
+        location_long = None
+    
+    return location_lat, location_long

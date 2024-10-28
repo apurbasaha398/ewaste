@@ -1,0 +1,12 @@
+Total Profit: 64674763.40481375
+Total revenue: 233391726.40484163
+Total fixed setup cost for shredders: 823131.0821372165
+Total operating cost for shredders: 52462478.47384646
+Total transportation cost for shredders: 12123922.780035222
+Total fixed setup cost for oxide producers: 869709.6389515987
+Total operational cost for oxide producers: 19623333.99931583
+Total transportation cost for oxide producers: 2135933.6547523206
+Total operational cost for fluoride producers: 14278461.536297591
+Total transportation cost for fluoride producers: 1009902.2773884232
+Total operational cost for metal producers: 64086029.32982795
+Total transportation cost for metal producers: 681179.4315471376
