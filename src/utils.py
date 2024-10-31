@@ -1,3 +1,4 @@
+import math
 import pandas as pd
 import googlemaps
 from openpyxl import load_workbook
@@ -31,7 +32,7 @@ def calculate_transportation_cost(start, end):
                 cost_matrix.at[start_loc, end_loc] = None  # or assign a default value
 
     # return the cost matrix
-    return cost_matrix.reset_index().rename(columns={cost_matrix.index.name:'code'})
+    return cost_matrix.reset_index().rename(columns={cost_matrix.index.name:'index'})
 
 def add_sheet_to_excelbook(file_path, sheet_name, new_data):
     """
@@ -89,3 +90,22 @@ def get_city_lat_long(city, state):
         location_long = None
     
     return location_lat, location_long
+
+def haversine(lat1, lon1, lat2, lon2):
+    # Convert latitude and longitude from degrees to radians
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+    
+    # Calculate differences
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    
+    # Haversine formula
+    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    
+    # Radius of Earth in miles
+    R = 3959.87433
+    
+    # Distance in miles
+    distance = R * c
+    return distance
