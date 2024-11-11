@@ -11,4 +11,5 @@ ipykernel
 openpyxl
 googlemaps
 geopy
+matplotlib
 -e .
